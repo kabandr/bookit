@@ -1,18 +1,20 @@
 {
   "name": "bookit",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Travel Booking Application.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build -w client && npm run start -w server",
+    "dev": "concurrently \"npm run dev -w server\" \"npm run start -w client\"",
+    "test": "concurrently \"npm test -w server\" \"npm test -w client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kabandr/bookit.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Rene Kabanda",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kabandr/bookit/issues"
   },
