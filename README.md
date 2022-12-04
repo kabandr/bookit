@@ -1,6 +1,6 @@
 # Bookit
 
-A Travel Booking Application built with React on an Express server and deployed using Docker, Docker Compose and Kubernetes.
+A Travel Booking Application built with React on Express server and deployed using Docker, Docker Compose and Kubernetes.
 
 ## Warning
 
