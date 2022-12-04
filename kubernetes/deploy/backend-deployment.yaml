@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookit-backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: bookit
+      tier: backend
+  replicas: 3
+  # refers to the pod
+  template:
+    metadata:
+      labels:
+        app: bookit
+        tier: backend
+    spec:
+      containers:
+        - name: bookit-backend
+          image: kabandr/bookit-express-backend:latest
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: MONGODB_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: mongodb_uri
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: backend_secret
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+          ports:
+            - containerPort: 3000

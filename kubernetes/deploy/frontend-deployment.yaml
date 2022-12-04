@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookit-frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: bookit
+      tier: frontend
+  replicas: 2
+  # refers to the pod
+  template:
+    metadata:
+      labels:
+        app: bookit
+        tier: frontend
+    spec:
+      containers:
+        - name: bookit-frontend
+          image: kabandr/bookit-react-frontend:latest
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+          ports:
+            - containerPort: 80

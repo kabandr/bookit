@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint \"**/*.js\"",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "cross-env NODE_ENV=production node index.js"
   },
   "repository": "git+https://github.com/kabandr/bookit-server.git",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
-    "eslint": "^8.15.0"
+    "eslint": "^8.15.0",
+    "nodemon": "^2.0.20"
   }
 }
