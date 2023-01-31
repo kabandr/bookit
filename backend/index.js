@@ -1,6 +1,5 @@
 import express from "express";
 import dotenv from "dotenv";
-import compression from "compression";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
@@ -12,14 +11,14 @@ import cors from "cors";
 
 const app = express();
 app.use(helmet());
-app.use(compression());
 dotenv.config();
 
-const port = process.env.SERVER_PORT || 8000;
+const port = process.env.SERVER_PORT || 3001;
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    mongoose.set("strictQuery", false);
+    mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB!");
   } catch (error) {
     throw Error;
