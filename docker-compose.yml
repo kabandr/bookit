@@ -1,7 +1,8 @@
 version: "3.9"
 
 services:
-  bookit-mongo:
+  mongo:
+    container_name: bookit-mongo
     image: mongo
     ports:
       - "27017:27017"
@@ -12,7 +13,8 @@ services:
       retries: 3
       start_period: 3s
   
-  bookit-backend:
+  express-backend:
+    container_name: bookit-backend
     build:
       context: ./backend
     ports:
@@ -22,18 +24,18 @@ services:
       - SECRET=secret
       - MONGODB_URI=bookit-mongo
     links:
-      - bookit-mongo
+      - mongo
     depends_on:
-      bookit-mongo:
+      mongo:
         condition: service_healthy
   
-  bookit-frontend:
+  react-frontend:
+    container_name: bookit-frontend
     build:
       context: ./frontend
-      dockerfile: Dockerfile.multistage
     ports:
       - "4100:80"
     links:
-      - bookit-backend
+      - express-backend
     depends_on:
-      - bookit-backend
+      - express-backend
