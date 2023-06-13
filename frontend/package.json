@@ -17,8 +17,10 @@
     "react-date-range": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.1",
-    "react-scripts": "5.0.1",
     "web-vitals": "^3.3.2"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "set PORT=4000 && react-scripts start",
@@ -43,6 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "nth-check": "^2.0.1"
   },
   "proxy": "http://localhost:30001/api"
 }
